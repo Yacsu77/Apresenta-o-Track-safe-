@@ -1,8 +1,8 @@
 # TrackSafe — API
 
-[← Voltar ao README](../README.md)
+[← Voltar ao README](../README.md) · **[Segurança](SECURITY.md)**
 
-Backend **REST** do ecossistema **TrackSafe**: processamento de alertas SOS, autenticação, gestão de usuários e contatos de emergência, integração com o aplicativo móvel, e-commerce e serviços externos. Hospedagem em nuvem, com persistência relacional e comunicação segura via HTTPS.
+Backend **REST** e canais **em tempo real** do ecossistema **TrackSafe**: processamento de alertas SOS, autenticação, gestão de usuários e contatos de emergência, integração com aplicativo móvel, e-commerce e serviços externos. Hospedagem em nuvem, com persistência relacional e comunicação segura via HTTPS.
 
 ---
 
@@ -10,11 +10,13 @@ Backend **REST** do ecossistema **TrackSafe**: processamento de alertas SOS, aut
 
 A API é o **núcleo de integração** entre as camadas do sistema:
 
-- **Aplicativo móvel** (React Native + Expo) — cadastro, perfil, grupo familiar, alertas e histórico.
-- **E-commerce** (React + TypeScript) — produtos, pedidos, checkout e painel administrativo.
-- **Hardware** — indiretamente, via app que encaminha eventos da pulseira após conexão Bluetooth.
+| Cliente | Função |
+|---------|--------|
+| **Aplicativo móvel** (React Native + Expo) | Cadastro, perfil, grupo familiar, alertas, histórico e pareamento com a pulseira |
+| **E-commerce** (React + TypeScript) | Produtos, pedidos, checkout e painel administrativo |
+| **Hardware** | Eventos da pulseira encaminhados pelo app após conexão Bluetooth |
 
-Responsável por validar requisições, aplicar regras de negócio, persistir dados e acionar notificações (incluindo SMS de emergência).
+Responsável por validar requisições, aplicar regras de negócio, persistir dados, acionar notificações (SMS) e servir **atualizações em tempo real** ao grupo familiar autorizado.
 
 ---
 
@@ -22,13 +24,15 @@ Responsável por validar requisições, aplicar regras de negócio, persistir da
 
 | Camada | Tecnologia |
 |--------|------------|
-| API | REST (HTTP/JSON) |
+| API HTTP | REST (JSON) sobre Express |
+| Tempo real | WebSocket com isolamento por família |
 | Hospedagem | Render |
 | Banco de dados | PostgreSQL (Supabase) |
 | SMS (alertas SOS) | Twilio |
-| Pagamentos | Gateway integrado no servidor (PIX e cartão) |
+| Pagamentos | Gateway Mercado Pago (servidor) |
+| Ficheiros | Storage compatível (via API, chaves só no servidor) |
 
-Credenciais, URLs e chaves de integração ficam apenas em variáveis de ambiente — **não versionadas** neste repositório de apresentação.
+Credenciais e URLs ficam **apenas** em variáveis de ambiente — não versionadas neste repositório.
 
 ---
 
@@ -36,17 +40,18 @@ Credenciais, URLs e chaves de integração ficam apenas em variáveis de ambient
 
 ```
 App móvel ──┐
-            ├── HTTPS ──► API REST (Render) ──► PostgreSQL (Supabase)
-E-commerce ─┘                              └──► Twilio (SMS SOS)
+            ├── HTTPS (REST) ──► API ──► PostgreSQL
+E-commerce ─┘         │              └──► Twilio (SMS)
+                      └── WSS (tempo real, por família)
+Pulseira ──BLE──► App ──► API
 ```
 
 ### Fluxo do alerta SOS (resumo)
 
 1. Usuária aciona o SOS na pulseira ou no aplicativo.
-2. O app envia o alerta e a localização para a API.
-3. A API persiste o evento e dispara notificações.
-4. Contatos de emergência recebem SMS (Twilio) e/ou notificações no app.
-5. O histórico fica disponível para consulta na aplicação.
+2. O app envia alerta e localização para a API.
+3. A API persiste, notifica contatos e regista histórico.
+4. Membros autorizados do grupo podem receber atualizações em tempo real no canal WebSocket.
 
 ---
 
@@ -54,27 +59,41 @@ E-commerce ─┘                              └──► Twilio (SMS SOS)
 
 | Domínio | Descrição |
 |---------|-----------|
-| **Autenticação** | Login, tokens de acesso, renovação de sessão e redefinição de senha |
-| **Usuários e perfil** | Cadastro, dados da conta e gestão de credenciais |
+| **Autenticação** | Login, access/refresh token, redefinição de senha |
+| **Usuários e perfil** | Cadastro, conta e gestão de credenciais |
 | **Rede de apoio** | Contatos de emergência e grupo familiar |
-| **Alertas SOS** | Registro de acionamentos, localização e histórico |
-| **E-commerce** | Catálogo, pedidos, pagamentos e operações administrativas |
-| **Administração** | Métricas, usuários, pedidos e ferramentas operacionais para perfis autorizados |
+| **Alertas SOS** | Acionamentos, localização e histórico |
+| **Tempo real** | Rastreamento e eventos via WebSocket (escopo familiar) |
+| **E-commerce** | Catálogo, pedidos, pagamentos, webhooks |
+| **Administração** | Métricas, utilizadores, pedidos e operações `master` |
+| **Storage** | Upload de avatares e imagens de produto (com autorização) |
 
-Regras de senha, autorização por perfil e conformidade de dados sensíveis são aplicadas **no servidor**.
+---
+
+## Segurança (resumo)
+
+Controles principais implementados no backend — detalhes na página dedicada **[Segurança da API](SECURITY.md)** (documento público, sem segredos nem código).
+
+| Área | Medida |
+|------|--------|
+| **Transporte** | HTTPS obrigatório em produção |
+| **Autenticação** | JWT access + refresh (segredos distintos) |
+| **Autorização** | Papéis `user` / `master`; regra próprio recurso ou admin |
+| **Abuso HTTP** | Rate limiter por IP |
+| **Duplicação** | Chave de identidade para idempotência (instância única hoje) |
+| **E-commerce** | Preço e totais calculados só no servidor |
+| **Dados** | Senhas em bcrypt; SQL parametrizado; Postgres com SSL |
+| **CORS** | Restringir origens em produção |
+| **Tempo real** | WebSocket autenticado + isolamento por família (RLS no canal) |
+| **Pagamentos** | Credenciais e webhooks só no servidor; cartão tokenizado no cliente |
+
+→ Documentação completa: **[docs/SECURITY.md](SECURITY.md)**
 
 ---
 
 ## Modelo de dados (visão geral)
 
-Banco relacional **PostgreSQL** com modelo orientado a:
-
-- Usuárias e autenticação
-- Contatos de emergência e notificações
-- Histórico de alertas e eventos
-- Dados de e-commerce (produtos, pedidos, etc.)
-
-O diagrama entidade-relacionamento (DER) completo está documentado no [relatório do projeto (PDF)](../DOCS/PI_Final.pdf).
+Banco relacional **PostgreSQL** com entidades para utilizadores, grupo familiar, alertas, e-commerce (produtos, pedidos, pagamentos) e registo de eventos de webhook. DER completo no [relatório PDF](../DOCS/PI_Final.pdf).
 
 ---
 
@@ -82,46 +101,33 @@ O diagrama entidade-relacionamento (DER) completo está documentado no [relatór
 
 | Serviço | Uso |
 |---------|-----|
-| **Twilio** | Disparo de SMS aos contatos cadastrados em emergência |
-| **Gateway de pagamento** | Processamento de PIX e cartão no checkout (servidor) |
-| **Supabase** | PostgreSQL gerenciado para persistência |
+| **Twilio** | SMS aos contatos em emergência |
+| **Mercado Pago** | PIX, cartão (token) e notificações de pagamento |
+| **Supabase** | PostgreSQL e storage de objetos (acesso via API) |
 
 ---
 
-## Segurança e conformidade
-
-- Comunicação via **HTTPS** entre clientes e API.
-- **Autenticação baseada em tokens**; renovação quando a sessão expira.
-- **Autorização no servidor** para rotas de perfil, admin e operações sensíveis.
-- Tratamento de **dados de localização** e informações pessoais alinhado à **LGPD**.
-- Alinhamento com contexto legal de proteção à mulher (Lei Maria da Penha e legislação correlata).
-- Segredos, connection strings e chaves de API **fora do repositório público**.
-
-O alerta SOS **não substitui** serviços oficiais de emergência (190, 180, etc.) — conforme termos do produto.
-
----
-
-## Requisitos não funcionais (API)
+## Requisitos não funcionais
 
 | Aspecto | Abordagem |
 |---------|-----------|
 | Disponibilidade | Hospedagem contínua em nuvem |
-| Desempenho | Resposta rápida ao acionamento do SOS |
-| Escalabilidade | API preparada para crescimento de carga na Render |
-| Persistência | Dados críticos em PostgreSQL |
-| Compatibilidade | Consumo por app Android e frontend web |
+| Desempenho | Resposta rápida ao SOS |
+| Proteção | Rate limit e validação em todas as rotas sensíveis |
+| Escalabilidade | API na Render; idempotência por chave evolui para store partilhado em multi-instância |
+| Persistência | PostgreSQL em produção; modo em memória apenas em testes |
 
 ---
 
-## Consumidores da API
+## Consumidores
 
-| Cliente | Principais operações |
+| Cliente | Operações principais |
 |---------|----------------------|
-| App móvel | SOS, localização, contatos, perfil, Bluetooth (via app) |
-| E-commerce | Loja, checkout, pedidos, admin |
-| Painel admin (web) | Dashboards, usuários, pedidos, estatísticas e mapas |
+| App móvel | SOS, família, perfil, Bluetooth, WebSocket |
+| Loja web | Catálogo, checkout, conta |
+| Painel admin | Gestão, estatísticas, mapas |
 
-Detalhes de endpoints, contratos e exemplos de payload permanecem nos repositórios privados de implementação.
+Contratos de API, endpoints e payloads: **repositórios privados** da equipa.
 
 ---
 
@@ -134,4 +140,5 @@ Detalhes de endpoints, contratos e exemplos de payload permanecem nos repositór
 
 ## Referência
 
-Documentação institucional e requisitos completos: [DOCS/PI_Final.pdf](../DOCS/PI_Final.pdf)
+- [Segurança da API](SECURITY.md)
+- [PI Final (PDF)](../DOCS/PI_Final.pdf)

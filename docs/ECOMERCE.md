@@ -70,7 +70,7 @@ SDK de pagamento carregado apenas onde o checkout exige tokenização segura do 
 - **Conta do usuário**: fluxo de suspensão com confirmação explícita e prazos informados na interface.
 - **Configuração**: segredos e URLs da API apenas em ambiente local/produção, fora do repositório público.
 
-Regras de senha, autorização no servidor e conformidade de dados são tratadas no backend.
+Regras de senha, autorização, rate limit, idempotência e tempo real no servidor estão descritas em **[Segurança da API](SECURITY.md)** (visão pública, sem expor implementação interna).
 
 ---
 

@@ -16,6 +16,7 @@
   <a href="docs/ECOMERCE.md">E-commerce</a> ·
   <a href="docs/API.md">API</a> ·
   <a href="docs/HARDWARE.md">Hardware</a> ·
+  <a href="docs/SECURITY.md"><strong>Segurança</strong></a> ·
   <a href="DOCS/PI_Final.pdf">Documentação do projeto (PDF)</a> ·
   <a href="LICENSE">Licença</a>
 </p>
@@ -37,6 +38,7 @@ O TrackSafe integra **pulseira inteligente**, **aplicativo móvel**, **API em nu
 | **E-commerce** | Loja online, checkout, área do cliente e painel administrativo (venda da pulseira) | [docs/ECOMERCE.md](docs/ECOMERCE.md) |
 | **API** | Backend REST, autenticação, alertas SOS, pedidos, dados e integrações (Twilio, pagamentos) | [docs/API.md](docs/API.md) |
 | **Hardware** | Pulseira física: acionamento SOS, Bluetooth BLE e comunicação com o app | [docs/HARDWARE.md](docs/HARDWARE.md) |
+| **Segurança** | Controles da API: JWT, rate limit, idempotência, CORS, pagamentos e WebSocket por família | [docs/SECURITY.md](docs/SECURITY.md) |
 
 ### Fluxo resumido
 
