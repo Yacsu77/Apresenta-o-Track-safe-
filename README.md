@@ -13,11 +13,13 @@
 </p>
 
 <p align="center">
+  <a href="docs/APPLICATIVO.md">Aplicativo</a> ·
   <a href="docs/ECOMERCE.md">E-commerce</a> ·
   <a href="docs/API.md">API</a> ·
   <a href="docs/HARDWARE.md">Hardware</a> ·
-  <a href="docs/SECURITY.md"><strong>Segurança</strong></a> ·
-  <a href="DOCS/PI_Final.pdf">Documentação do projeto (PDF)</a> ·
+  <a href="docs/SECURITY.md">Segurança</a> ·
+  <a href="docs/WIKI.md">Wiki</a> ·
+  <a href="DOCS/PI_Final.pdf">PI (PDF)</a> ·
   <a href="LICENSE">Licença</a>
 </p>
 
@@ -25,25 +27,27 @@
 
 ## Sobre o repositório
 
-Este repositório é a **apresentação pública** do ecossistema **TrackSafe**. Aqui você encontra a visão técnica e de produto das três frentes do sistema — sem expor código proprietário ou segredos de ambiente.
+Este repositório é a **apresentação pública** do ecossistema **TrackSafe**. Aqui você encontra a visão técnica e de produto de cada frente — sem expor código proprietário ou segredos de ambiente.
 
 O TrackSafe integra **pulseira inteligente**, **aplicativo móvel**, **API em nuvem** e **loja online** para reduzir o tempo de resposta em emergências e ampliar a proteção da usuária.
 
 ---
 
-## Arquitetura em três frentes
+## Documentação
 
-| Seção | Papel no ecossistema | Documentação |
-|-------|----------------------|--------------|
-| **E-commerce** | Loja online, checkout, área do cliente e painel administrativo (venda da pulseira) | [docs/ECOMERCE.md](docs/ECOMERCE.md) |
-| **API** | Backend REST, autenticação, alertas SOS, pedidos, dados e integrações (Twilio, pagamentos) | [docs/API.md](docs/API.md) |
-| **Hardware** | Pulseira física: acionamento SOS, Bluetooth BLE e comunicação com o app | [docs/HARDWARE.md](docs/HARDWARE.md) |
-| **Segurança** | Controles da API: JWT, rate limit, idempotência, CORS, pagamentos e WebSocket por família | [docs/SECURITY.md](docs/SECURITY.md) |
+| Seção | Papel | Banner / Doc |
+|-------|--------|----------------|
+| **Aplicativo** | App Android (SOS, família, BLE, push) | [docs/APPLICATIVO.md](docs/APPLICATIVO.md) |
+| **E-commerce** | Loja, checkout e painel admin | [docs/ECOMERCE.md](docs/ECOMERCE.md) |
+| **API** | Backend REST, WebSocket, pagamentos, SMS | [docs/API.md](docs/API.md) |
+| **Hardware** | Pulseira ESP32, BLE, botão SOS | [docs/HARDWARE.md](docs/HARDWARE.md) |
+| **Segurança** | JWT, rate limit, idempotência, RLS em tempo real | [docs/SECURITY.md](docs/SECURITY.md) |
+| **Wiki** | Termos de uso e política de privacidade (LGPD) | [docs/WIKI.md](docs/WIKI.md) |
 
 ### Fluxo resumido
 
 ```
-Pulseira (SOS) ──BLE──► App móvel ──HTTPS──► API REST ──► Banco + SMS + E-commerce
+Pulseira (SOS) ──BLE──► App móvel ──HTTPS/WSS──► API ──► Banco + SMS
                               │
                               └── Loja web (React) ──► mesma API
 ```
@@ -54,7 +58,7 @@ Pulseira (SOS) ──BLE──► App móvel ──HTTPS──► API REST ─�
 
 Desenvolver um sistema funcional que permita **acionar alerta de forma rápida e discreta**, **enviar localização** e **notificar a rede de apoio** cadastrada — contribuindo para a redução do tempo de resposta em situações críticas.
 
-Metodologia baseada em **Design Thinking** (imersão, definição, ideação e solução), com pesquisa junto a usuárias para validar necessidades reais.
+Metodologia baseada em **Design Thinking**, com pesquisa junto a usuárias para validar necessidades reais.
 
 ---
 
@@ -72,6 +76,7 @@ Metodologia baseada em **Design Thinking** (imersão, definição, ideação e s
 ## Documentação adicional
 
 - [PI Final — Track Safe (PDF)](DOCS/PI_Final.pdf) — relatório completo do projeto integrador (SENAC)
+- [Termos de uso (Wiki)](docs/WIKI.md) — também em [`DOCS/terms.json`](DOCS/terms.json)
 
 ---
 

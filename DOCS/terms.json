@@ -1,0 +1,214 @@
+{
+  "version": "1.0",
+  "updatedAt": "Abril de 2026",
+  "title": "Termos de Uso e Política de Privacidade",
+  "content": {
+    "intro": "Bem-vindo(a) ao Track Safe. Antes de utilizar nosso aplicativo, leia atentamente os presentes Termos de Uso e Política de Privacidade. Ao criar uma conta ou utilizar qualquer funcionalidade do aplicativo, você declara que leu, compreendeu e concorda com todas as condições aqui estabelecidas. Caso não concorde com qualquer parte destes Termos, não utilize o aplicativo.",
+    "sections": [
+      {
+        "title": "1. Informações Gerais sobre o Aplicativo",
+        "content": "O Track Safe é um aplicativo móvel desenvolvido para aumentar a segurança de mulheres em situações de risco ou emergência. O aplicativo oferece as seguintes funcionalidades principais:",
+        "items": [
+          "Botão SOS para envio de alertas de emergência a familiares e contatos de confiança",
+          "Compartilhamento de localização durante situações de emergência",
+          "Conexão com pulseira inteligente (via Bluetooth) para acionamento remoto do SOS",
+          "Gerenciamento de grupo familiar para recebimento de alertas",
+          "Histórico de alertas e notificações",
+          "Cadastro de contatos de emergência para envio de mensagens SMS"
+        ]
+      },
+      {
+        "title": "2. Cadastro, Conta e Responsabilidades do Usuário",
+        "subsections": [
+          {
+            "title": "2.1 Elegibilidade",
+            "content": "O Track Safe é destinado a pessoas maiores de 16 (dezesseis) anos. Usuários entre 16 e 18 anos devem ter autorização de seus responsáveis legais."
+          },
+          {
+            "title": "2.2 Criação de Conta",
+            "content": "Para utilizar o aplicativo, é necessário fornecer:",
+            "items": [
+              "Nome completo",
+              "Endereço de e-mail válido (verificado por código)",
+              "Senha segura com no mínimo 6 (seis) caracteres"
+            ],
+            "afterContent": "O usuário é responsável por manter a confidencialidade de suas credenciais."
+          },
+          {
+            "title": "2.3 Redefinição de senha",
+            "content": "O usuário poderá redefinir sua senha mediante verificação de código enviado ao e-mail cadastrado."
+          },
+          {
+            "title": "2.4 Veracidade das Informações",
+            "content": "O usuário declara que todas as informações fornecidas no cadastro são verdadeiras, precisas e atualizadas."
+          },
+          {
+            "title": "2.5 Uso Responsável",
+            "content": "O usuário compromete-se a utilizar o aplicativo exclusivamente para fins legítimos de segurança pessoal, sendo expressamente proibido:",
+            "items": [
+              "O envio de alertas SOS falsos",
+              "A utilização do aplicativo para assédio, perseguição ou monitoramento não autorizado de terceiros",
+              "Qualquer uso que viole a legislação brasileira vigente",
+              "A tentativa de acessar contas de terceiros sem autorização"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "3. Funcionalidades, Limitações e Isenção de Responsabilidade",
+        "subsections": [
+          {
+            "title": "3.1 Alerta SOS",
+            "content": "O recurso SOS envia notificações push e mensagens SMS para os contatos e familiares cadastrados. O Track Safe não substitui em nenhuma hipótese os serviços oficiais de emergência. Em situações de risco à vida, o usuário deve contatar imediatamente:",
+            "items": [
+              "SAMU: 192",
+              "Bombeiros: 193",
+              "Polícia Militar: 190",
+              "Central de Atendimento à Mulher: 180"
+            ]
+          },
+          {
+            "title": "3.2 Pulseira Inteligente",
+            "content": "O Track Safe pode ser utilizado em conjunto com uma pulseira inteligente desenvolvida pela própria equipe do aplicativo, destinada ao acionamento remoto do alerta SOS. A funcionalidade depende de conexão Bluetooth entre o dispositivo móvel e a pulseira, podendo sofrer interferências por fatores externos como distância, obstáculos físicos, estado da bateria, compatibilidade do dispositivo e condições do ambiente. O Track Safe não garante funcionamento ininterrupto da conexão Bluetooth e não se responsabiliza por falhas decorrentes de:",
+            "items": [
+              "perda de conexão entre a pulseira e o dispositivo móvel",
+              "bateria descarregada ou defeitos físicos na pulseira",
+              "limitações do sistema operacional do dispositivo do usuário",
+              "interferências externas que afetem a comunicação"
+            ],
+            "afterContent": "O usuário é responsável por manter a pulseira devidamente carregada, configurada e dentro do alcance adequado para funcionamento. A pulseira inteligente é um recurso complementar sendo ainda possível emitir o alerta SOS via app."
+          },
+          {
+            "title": "3.3 Disponibilidade do Serviço",
+            "content": "O Track Safe não garante disponibilidade ininterrupta do serviço. Poderão ocorrer períodos de indisponibilidade para manutenção, atualizações ou por fatores externos (falhas de infraestrutura, conectividade de internet, etc.). O aplicativo não se responsabiliza por danos causados pela indisponibilidade do serviço."
+          },
+          {
+            "title": "3.4 Precisão da Localização",
+            "content": "A precisão dos dados de localização depende do dispositivo do usuário, das condições do ambiente e da disponibilidade de sinal GPS. O Track Safe não garante precisão absoluta das informações de localização compartilhadas."
+          }
+        ]
+      },
+      {
+        "title": "4. Política de Privacidade e Proteção de Dados (LGPD)",
+        "content": "O Track Safe está em conformidade com a Lei nº 13.709/2018 (LGPD). Ao utilizar o aplicativo, o usuário consente com o tratamento de seus dados conforme descrito nesta política.",
+        "subsections": [
+          {
+            "title": "4.1 Dados Coletados",
+            "content": "Coletamos os seguintes dados pessoais:",
+            "items": [
+              "Nome e e-mail",
+              "Localização (somente em situações de emergência)",
+              "Histórico de alertas SOS",
+              "Token de notificações push",
+              "Foto de perfil (opcional)",
+              "Contatos de emergência cadastrados pelo usuário"
+            ]
+          },
+          {
+            "title": "4.2 Finalidade do Tratamento",
+            "content": "Os dados pessoais coletados são utilizados exclusivamente para:",
+            "items": [
+              "Prestação dos serviços de segurança oferecidos pelo aplicativo",
+              "Envio de alertas SOS",
+              "Autenticação e gerenciamento da conta do usuário",
+              "Melhoria contínua dos serviços e experiência do usuário",
+              "Cumprimento de obrigações legais"
+            ]
+          },
+          {
+            "title": "4.3 Base Legal para o Tratamento",
+            "content": "O tratamento dos dados pessoais é realizado com base nas seguintes hipóteses legais previstas na LGPD:",
+            "items": [
+              "Consentimento do titular (Art. 7º, I): para coleta de localização e foto de perfil",
+              "Execução de contrato (Art. 7º, V): para dados necessários à prestação dos serviços",
+              "Legítimo interesse (Art. 7º, IX): para melhoria dos serviços e segurança da plataforma"
+            ]
+          },
+          {
+            "title": "4.4 Compartilhamento de Dados",
+            "content": "Os dados são compartilhados apenas com:",
+            "items": [
+              "Contatos e familiares cadastrados",
+              "Serviços de infraestrutura (ex: Supabase e Expo)"
+            ],
+            "afterContent": "O Track Safe não vende, cede ou comercializa dados pessoais de usuários a terceiros."
+          },
+          {
+            "title": "4.5 Uso de Contatos de Terceiros",
+            "content": "O usuário declara possuir autorização dos contatos cadastrados para uso de seus dados no envio de alertas."
+          },
+          {
+            "title": "4.6 Uso de Localização",
+            "content": "A localização é coletada apenas mediante ação do usuário (como acionamento do SOS) e compartilhada exclusivamente com contatos autorizados."
+          },
+          {
+            "title": "4.7 Envio de SMS",
+            "content": "Os números de telefone dos contatos são utilizados exclusivamente para envio de mensagens SMS em situações de emergência."
+          },
+          {
+            "title": "4.8 Notificações Push",
+            "content": "Utilizamos notificações push para envio de alertas em tempo real."
+          },
+          {
+            "title": "4.9 Retenção de Dados",
+            "content": "Os dados são armazenados pelo tempo necessário à prestação do serviço ou conforme exigência legal. Após exclusão da conta, os dados são removidos em até 30 dias."
+          },
+          {
+            "title": "4.10 Segurança dos Dados",
+            "content": "Adotamos medidas como:",
+            "items": [
+              "Hash seguro de senhas no servidor",
+              "Comunicação criptografada (HTTPS/TLS)",
+              "Autenticação via tokens JWT",
+              "Controle de acesso"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "5. Direitos dos Titulares de Dados",
+        "content": "Em conformidade com a LGPD, o usuário possui os seguintes direitos em relação aos seus dados pessoais:",
+        "items": [
+          "Acesso: solicitar confirmação e cópia dos dados tratados",
+          "Correção: solicitar a atualização de dados incompletos, inexatos ou desatualizados",
+          "Anonimização ou bloqueio: solicitar a anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desconformidade com a LGPD",
+          "Eliminação: solicitar a exclusão dos dados tratados com base no consentimento",
+          "Revogação do consentimento: revogar o consentimento previamente concedido",
+          "Informação sobre compartilhamento: solicitar informações sobre entidades com as quais os dados são compartilhados"
+        ],
+        "afterContent": "Para exercer qualquer um desses direitos, o usuário pode fazê-lo diretamente pelo aplicativo (na seção Meu Perfil) ou entrando em contato com nossa equipe."
+      },
+      {
+        "title": "6. Grupo Familiar e Compartilhamento",
+        "content": "O recurso de grupo familiar permite que usuários se conectem para recebimento mútuo de alertas SOS. Ao utilizar este recurso, o usuário declara que:",
+        "items": [
+          "Possuir consentimento dos membros adicionados",
+          "Estar ciente do compartilhamento de localização durante SOS"
+        ],
+        "afterContent": "O Track Safe não se responsabiliza por conflitos entre usuários."
+      },
+      {
+        "title": "7. Propriedade Intelectual",
+        "content": "Todo o conteúdo do aplicativo Track Safe, incluindo mas não se limitando a código-fonte, design, logotipos, ícones, textos e funcionalidades, é de propriedade exclusiva de seus desenvolvedores e está protegido pela legislação brasileira de propriedade intelectual (Lei nº 9.610/1998). É vedado ao usuário reproduzir, distribuir, modificar, criar obras derivadas, realizar engenharia reversa ou explorar comercialmente qualquer parte do aplicativo sem autorização expressa e prévia por escrito."
+      },
+      {
+        "title": "8. Modificações nos Termos",
+        "content": "Os termos podem ser alterados, com aviso prévio mínimo de 15 dias."
+      },
+      {
+        "title": "9. Encerramento de Conta",
+        "content": "O usuário pode encerrar a conta a qualquer momento. Após isso:",
+        "items": [
+          "Acesso será revogado",
+          "Os dados pessoais serão eliminados no prazo de até 30 (trinta) dias"
+        ],
+        "afterContent": "Contas podem ser suspensas em caso de violação dos termos."
+      },
+      {
+        "title": "10. Legislação Aplicável e Foro",
+        "content": "Regido pelas leis brasileiras. Foro: São Paulo/SP."
+      }
+    ],
+    "footer": "Track Safe — Sua segurança é nossa prioridade. Última atualização: Abril de 2026"
+  }
+}

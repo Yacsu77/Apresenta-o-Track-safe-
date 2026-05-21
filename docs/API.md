@@ -1,6 +1,10 @@
+<p align="center">
+  <img src="../Image/Banner%20.png" alt="TrackSafe — API" width="100%" />
+</p>
+
 # TrackSafe — API
 
-[← Voltar ao README](../README.md) · **[Segurança](SECURITY.md)**
+[← Voltar ao README](../README.md) · [Aplicativo](APPLICATIVO.md) · **[Segurança](SECURITY.md)** · [Wiki](WIKI.md)
 
 Backend **REST** e canais **em tempo real** do ecossistema **TrackSafe**: processamento de alertas SOS, autenticação, gestão de usuários e contatos de emergência, integração com aplicativo móvel, e-commerce e serviços externos. Hospedagem em nuvem, com persistência relacional e comunicação segura via HTTPS.
 

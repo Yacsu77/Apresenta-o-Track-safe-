@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../Image/Banner%20track%20safe.png" alt="TrackSafe — E-commerce" width="100%" />
+</p>
+
 # TrackSafe — E-commerce
 
 [← Voltar ao README](../README.md)
@@ -81,7 +85,7 @@ Regras de senha, autorização, rate limit, idempotência e tempo real no servid
 | Home | Apresentação do produto, benefícios e destaques |
 | Produtos | Listagem e página de detalhe |
 | Personalizar | Visualização 3D da pulseira |
-| Institucional | Quem somos, termos e privacidade |
+| Institucional | Quem somos; [termos e privacidade na Wiki](WIKI.md) |
 | Carrinho | Itens, quantidades e total |
 | Conta | Login, cadastro, perfil e pedidos |
 | Checkout | Finalização com PIX ou cartão (usuário autenticado) |

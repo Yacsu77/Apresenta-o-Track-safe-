@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../Image/BannerSegurança.png" alt="TrackSafe — Segurança" width="100%" />
+</p>
+
 # TrackSafe — Segurança da API
 
 [← Voltar ao README](../README.md) · [API](API.md)

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../Image/Banner%20Pulceira.png" alt="TrackSafe — Pulseira inteligente" width="100%" />
+</p>
+
 # TrackSafe — Hardware
 
 [← Voltar ao README](../README.md)
